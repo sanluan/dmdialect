@@ -1,0 +1,35 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: "eclipse-wtp"
+
+group = 'dm'
+version = '1.0'
+
+ext {
+        // http://mvnrepository.com/artifact/org.hibernate/hibernate-core
+        // http://hibernate.org/orm/downloads/
+        hibernateVersion = "5.4.12.Final"
+}
+dependencies {
+    compile (
+        "org.hibernate:hibernate-core:${hibernateVersion}"
+    )
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+[compileJava]*.options*.encoding = "UTF-8"
+[compileTestJava]*.options*.encoding = "UTF-8"
+
+repositories {
+		mavenLocal()
+		// jcenter()
+        mavenCentral()
+    }
+    eclipse {
+	    wtp {
+	        facet {
+	            facet name: "jst.java", version: "1.8"
+	        }
+	    }
+	}
