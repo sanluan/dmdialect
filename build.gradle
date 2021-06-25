@@ -1,6 +1,8 @@
-apply plugin: 'java'
-apply plugin: 'idea'
-apply plugin: "eclipse-wtp"
+plugins {
+    id 'idea'
+    id 'eclipse'
+    id 'eclipse-wtp'
+}
 
 group = 'dm'
 version = '1.0'
@@ -8,12 +10,10 @@ version = '1.0'
 ext {
         // http://mvnrepository.com/artifact/org.hibernate/hibernate-core
         // http://hibernate.org/orm/downloads/
-        hibernateVersion = "5.4.12.Final"
+        hibernateVersion = "5.4.32.Final"
 }
 dependencies {
-    compile (
-        "org.hibernate:hibernate-core:${hibernateVersion}"
-    )
+    implementation "org.hibernate:hibernate-core:${hibernateVersion}"
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -23,7 +23,6 @@ targetCompatibility = 1.8
 
 repositories {
 		mavenLocal()
-		// jcenter()
         mavenCentral()
     }
     eclipse {
